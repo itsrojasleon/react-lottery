@@ -11,11 +11,18 @@ class Lottery extends Component {
     nums: Array.from({ length: this.props.maxBalls }),
   };
 
-  generate = () => {};
+  generate = () => {
+    this.setState(curState => ({
+      nums: curState.nums.map(
+        n => Math.floor(Math.random() * this.props.maxNum) + 1,
+      ),
+    }));
+  };
   handleClick = () => {
     this.generate();
   };
   render() {
+    console.log(this.state.nums);
     return (
       <div>
         <h1>{this.props.title}</h1>
